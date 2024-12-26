@@ -12,10 +12,8 @@ def main():
         itemList = []
         for row in csv_reader:
             item = Item(*row)
-            if item.ProductID in itemDict:
-                itemDict[item.ProductID]+=int(item.Quantity)
-            else:
-                itemDict[item.ProductID] = int(item.Quantity)
+            #default dict behaviour*****
+            itemDict[item.ProductID]+=int(item.Quantity)
         pprint(itemDict)
 
         # for row in csv_reader:
