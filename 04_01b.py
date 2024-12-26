@@ -1,5 +1,5 @@
 from collections import namedtuple
-
+from collections import defaultdict
 def main():
     #add code here
     Food = namedtuple("Food", ["identifier", "name"])
@@ -35,6 +35,23 @@ def main():
         Food("DES005",	"Mixed Berry Tart"),
         Food("BEV003",	"Cafe Latte"),
     ]
+    d = defaultdict(set)
+    for food in nadias_list:
+        category = food.identifier[0:3]
+        if category=="STA":
+            d["Starters"].add(food.name)
+        elif category=="DES":
+            d["Desserts"].add(food.name)
+        elif category=="SAL":
+            d["Salads"].add(food.name)
+        elif category=="ENT":
+            d["Entree"].add(food.name)
+        else:
+            d["Beverages"].add(food.name)
+    print(len(nadias_list))
+    print(len(d["Starters"])+len(d["Beverages"])+len(d["Desserts"])+len(d["Salads"])+len(d["Entree"]))
+    for item in d.items():
+        print(item)
 
     return
 
